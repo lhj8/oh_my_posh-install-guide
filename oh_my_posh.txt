@@ -1,0 +1,55 @@
+# 설명 영상: https://www.youtube.com/watch?v=9ARUjNF_21g&t=111s
+# 텍스트 복사: https://finescore.tistory.com/4
+# Oh My Posh Theme: https://ohmyposh.dev/docs/themes
+
+# Window 버전 확인
+Get-ComputerInfo | Select WindowsProductName
+
+# Window 운영체제(x64 / ARM64) 확인
+wmic os get osarchitecture
+
+### 전체 정보 확인하려면
+    systeminfo
+
+# Windows Terminal 없을 경우 Microsoft Store 
+Windows Terminal 설치
+
+# VS code 설치 
+https://code.visualstudio.com/
+
+# Git 설치
+1) https://git-scm.com/install/windows
+2) 설치 과정에서 Default Editor를 VS Code로 변경
+3) 설치 과정에서 [V] Add Git Bash profile on Windows Terminal
+
+# https://www.nerdfonts.com/font-downloads
+1) JetBrainsMono Nerd Font 다운로드
+2) 압축 풀기
+3) Ctrl + A -> 오른쪽 버튼 -> 설치
+
+# Oh-My-Posh 설치 및 폰트 적용
+1) 시작의 검색 (터미널) 
+2) 터미널을 "관리자 권한으로 실행"
+3) winget install JanDeDobbeleer.OhMyPosh -s winget
+4) 설치가 완료되면 터미널을 완전히 껏다가 다시 "관리자 권한으로 실행"
+5) 탭옆에 화살표 클릭 -> 설정 -> 좌측 맨 밑 "json 파일 열기" 
+6) profiles의 defaults에 입력
+7) "defaults": 
+        {
+            "font": 
+            {
+                "face": "JetBrainsMono Nerd Font"
+            }
+        },
+8) 저장
+
+# 테마 적용 (aliens 혹은 powerline)
+1) 터미널을 "관리자 권한으로 실행"
+2) 터미널에서 명령어: notepad $PROFILE 실행 ※ "지정한 경로를 찾을 수 없습니다." 가 뜨는 경우, 아래의 명령어를 실행하고 위의 명령어를 재실행
+                : New-Item -Path $PROFILE -Type File -Force
+3) 열린 메모장에 입력
+oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/aliens.omp.json" | Invoke-Expression
+4) 저장 후 메모장 종료
+5) 다시 터미널을 "관리자 권한으로 실행"
+6) 빨간 글씨로 에러 뜰시 명령어: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+7) 다시 터미널을 "관리자 권한으로 실행"
