@@ -53,3 +53,40 @@ oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/
 5) 다시 터미널을 "관리자 권한으로 실행"
 6) 빨간 글씨로 에러 뜰시 명령어: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 7) 다시 터미널을 "관리자 권한으로 실행"
+
+
+
+# 기타 플러그인 추가
+1) 아이콘 모양 추가: Install-Module -Name Terminal-Icons -Repository PSGallery 
+2) 히스토리: Install-Module -Name PSReadLine -Force -AllowClobber -Scope CurrentUser 
+3) 명령 예측 엔진: Install-Module -Name Microsoft.PowerShell.Predictor -Force 
+
+
+# NotePad $PRofile  예시
+# 1. 인코딩 및 코드 페이지 설정 (가장 먼저 실행)
+$env:LC_ALL='C.UTF-8'
+[System.Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001 > $null
+
+# 2. 별칭(Alias) 설정
+Set-Alias grep Select-String
+
+# 3. Oh My Posh 초기화 (Aliens 테마)
+oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/aliens.omp.json" | Invoke-Expression
+
+# 4. 자동완성 및 제안 기능 최적화
+if (Get-Module -ListAvailable PSReadLine) {
+    Set-PSReadLineOption -PredictionSource History
+    Set-PSReadLineOption -PredictionViewStyle ListView
+    Set-PSReadLineOption -EditMode Windows
+    Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+}
+
+# 5. 터미널 아이콘
+Import-Module Terminal-Icons
+
+
+
+
