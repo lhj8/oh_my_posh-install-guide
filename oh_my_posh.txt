@@ -60,6 +60,7 @@ oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/
 1) 아이콘 모양 추가: Install-Module -Name Terminal-Icons -Repository PSGallery 
 2) 히스토리: Install-Module -Name PSReadLine -Force -AllowClobber -Scope CurrentUser 
 3) 명령 예측 엔진: Install-Module -Name Microsoft.PowerShell.Predictor -Force 
+4) 터미널 아이콘: Install-Module -Name Terminal-Icons -Repository PSGallery
 
 
 # NotePad $PRofile  예시
